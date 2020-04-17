@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Covid-19 Tracker</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="container-fluid">
+        <!-- NAVBAR -->
+
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="#"><span class="badge badge-secondary">COVID-19</span></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-item nav-link" href="#">States</a>
+                    <a class="nav-item nav-link" href="#">Patients</a>
+                    <a class="nav-item nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Jumbo header -->
+        <div class="helpline">
+            Helpline<br>
+            011-23978046<br>
+            <a href="mailto:email@example.com">ncov2019@gov.in</a>
+        </div>
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+                <h1 class="display-4">Stay Home, Stay Safe!</h1>
+                <p class="lead">Be considerate. While buying essentials remember that you need to share with 130 crore
+                    fellow citizens!</p>
+            </div>
+        </div>
+
+        <!-- Statistics -->
+
+        <div class="container-fluid center">
+            <div class="stats">
+                <h4 style="color: rgb(252, 67, 67);">Confirmed</h4>
+                <p><%= conf %></p>
+            </div>
+            <div class="stats">
+                <h4 style="color: rgb(122, 245, 122);">Recovered</h4>
+                <p><%= recov %></p>
+            </div>
+            <div class="stats">
+                <h4 style="color: rgb(247, 202, 57);">Active</h4>
+                <p><%= active %></p>
+            </div>
+            <div class="stats">
+                <h4 style="color: black;">Deceased</h4>
+                <p><%= deaths %></p>
+            </div>
+        </div>
+
+        <!-- Graph -->
+        <section>
+            <canvas id="myChart"></canvas>
+        </section>
+        
+
+        <script>
+            var ctx = document.getElementById('myChart').getContext('2d');
+            var chart = new Chart(ctx, {
+                // The type of chart we want to create
+                type: 'bar',
+
+                // The data for our dataset
+                data: {
+                    labels: ['<%= st1 %>','<%= st2 %>','<%= st3 %>','<%= st4 %>','<%= st5 %>','<%= st6 %>'],
+                    datasets: [{
+                        label: 'Most Active States',
+                        backgroundColor: 'rgb(255, 99, 132)',
+                        borderColor: 'rgb(255, 99, 132)',
+                        data: [Number(<%= ac1 %>), Number(<%= ac2 %>), Number(<%= ac3 %>), Number(<%= ac4 %>), Number(<%= ac5 %>), Number(<%= ac6 %>)]
+                    }]
+                },
+
+                // Configuration options go here
+                options: {}
+            });
+        </script>
+    </div>
+
+    <div class="footer-padding">
+        <div class="footer">
+            <p class="footer-text">© Sudip Dhara</p>
+        </div>
+    </div>
+
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

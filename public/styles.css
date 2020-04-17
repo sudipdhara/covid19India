@@ -31,3 +31,12 @@ section{
     float:right;
     text-align: center;
 }
+.row{
+    margin: 5% auto;
+    text-align: center;
+}
+.col-md img{
+    height: 90%;
+    width: 90%;
+    border-radius: 5%;
+}
